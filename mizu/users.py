@@ -66,9 +66,9 @@ def get_credits(adapter):
             if adapter == MockAdapter:
                 user_ret = adapter.get_user(uid)
             else:
-                logger.debug(f'Fetching user {} from ldap', user)
+                logger.debug(f'Fetching user {user} from ldap')
                 user = _ldap.get_member(uid, uid=True)
-                logger.debug(f'Fetched user {} from ldap', user)
+                logger.debug(f'Fetched user {user} from ldap')
                 
                 user_ret = {
                     'uid': user.uid,
