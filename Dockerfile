@@ -1,4 +1,4 @@
-FROM python:3.9.7
+FROM docker.io/python:3.9.7-buster
 MAINTAINER Computer Science House Drink Admins <drink@csh.rit.edu>
 
 RUN apt-get update && \
