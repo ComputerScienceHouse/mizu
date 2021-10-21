@@ -1,4 +1,4 @@
-FROM python:3.7.3
+FROM python:3.9.7
 MAINTAINER Computer Science House Drink Admins <drink@csh.rit.edu>
 
 RUN apt-get update && \
