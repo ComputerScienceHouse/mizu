@@ -84,14 +84,14 @@ def current_drinks(adapter):
             return bad_params(err)
 
         logger.debug('Fetching contents for machine {}'.format(machine_name))
-        machines = []
-        machines.append(machine)
+        machines = [machine]
 
     response = {}
 
     with Pool(5) as p:
         contents = p.starmap(query_machine, [(machine, adapter.get_slots_in_machine(machine['name'])) for machine in machines])
         response['machines'] = contents
+        logging.debug(f'Fetched all data for {len(contents)} machine(s)')
 
     response['message'] = 'Successfully retrieved machine contents for {}'.format(
         ', '.join([machine['name'] for machine in machines])
