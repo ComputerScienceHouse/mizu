@@ -122,10 +122,10 @@
         },
         "csh-ldap": {
             "hashes": [
-                "sha256:6a720ac99f61dcc89ae9cfba2c81a9e8b00f51925ae3c225574ddd045c71e336"
+                "sha256:dcaa7afb62c8bffe1fa16620d3d13a2975d4637ca941ce712d0474a0c13a6b2b"
             ],
             "index": "pypi",
-            "version": "==2.2.0"
+            "version": "==2.3.1"
         },
         "dnspython": {
             "hashes": [
