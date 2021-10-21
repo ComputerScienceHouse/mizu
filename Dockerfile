@@ -26,7 +26,7 @@ USER mizu
 
 CMD gunicorn "wsgi:app" \
 	--workers 1 \
-	--timeout 600 \
+	--timeout 30 \
 	--capture-output \
 	--bind=0.0.0.0:8080 \
 	--access-logfile=-
