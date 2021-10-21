@@ -25,9 +25,10 @@ RUN groupadd -r mizu && \
 USER mizu
 
 CMD gunicorn "wsgi:app" \
-	--workers 1 \
-	--timeout 30 \
-	--capture-output \
-	--bind=0.0.0.0:8080 \
-	--access-logfile=-
+    --workers 1 \
+    --threads 8 \
+    --timeout 30 \
+    --capture-output \
+    --bind=0.0.0.0:8080 \
+    --access-logfile=-
 
