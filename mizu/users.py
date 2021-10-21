@@ -16,7 +16,7 @@ from mizu.data_adapters import SqlAlchemyAdapter
 from mizu.data_adapters import MockAdapter
 from mizu.data_adapters import get_adapter
 
-from mizu import ldap as _ldap
+from mizu import logger, ldap as _ldap
 
 from mizu.auth import check_token
 from mizu.errors import bad_params, bad_headers_content_type
@@ -66,9 +66,9 @@ def get_credits(adapter):
             if adapter == MockAdapter:
                 user_ret = adapter.get_user(uid)
             else:
-                logger.debug(f'Fetching user {user} from ldap')
+                logger.debug(f'Fetching user {uid} from ldap')
                 user = _ldap.get_member(uid, uid=True)
-                logger.debug(f'Fetched user {user} from ldap')
+                logger.debug(f'Fetched user {uid} from ldap')
                 
                 user_ret = {
                     'uid': user.uid,
