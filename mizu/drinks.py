@@ -28,9 +28,8 @@ from multiprocessing import Pool
 
 drinks_bp = Blueprint('drinks_bp', __name__)
 
-def query_machine(machine, adapter):
+def query_machine(machine, machine_slots):
     logger.debug('Querying machine details for {}'.format(machine['name']))
-    machine_slots = adapter.get_slots_in_machine(machine['name'])
 
     is_online = True
 
@@ -90,9 +89,8 @@ def current_drinks(adapter):
 
     response = {}
 
-
     with Pool(5) as p:
-        contents = p.starmap(query_machine, [(machine, adapter) for machine in machines])
+        contents = p.starmap(query_machine, [(machine, adapter.get_slots_in_machine(machine['name'])) for machine in machines])
         response['machines'] = contents
 
     response['message'] = 'Successfully retrieved machine contents for {}'.format(
