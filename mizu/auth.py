@@ -1,5 +1,6 @@
 from functools import wraps
 from flask import request, jsonify
+import json
 
 import requests
 
@@ -30,6 +31,9 @@ def check_token(admin_only=False, return_user_obj=False):
             key = request.headers.get('X-Auth-Token', None)
             if key is not None:
                 if key == app.config['MACHINE_API_TOKEN']:
+                    if return_user_obj:
+                        user = json.loads(request.headers.get('X-User-Info', 'null'))
+                        return func(*args, user=user, **kwargs)
                     return func(*args, **kwargs)
                 else:
                     return jsonify(key_unauthorized), 401
