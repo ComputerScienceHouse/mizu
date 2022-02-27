@@ -13,8 +13,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 from csh_ldap import CSHLDAP
+import ldap
 
 from mizu import config
+
+if os.environ.get("LDAP_DEBUG") == "true":
+    ldap.set_option(ldap.OPT_DEBUG_LEVEL, 255)
 
 logger = logging.getLogger(__name__)
 
